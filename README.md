@@ -22,7 +22,7 @@ A small web app that pulls a random quote and shifts the page's background gradi
 
 ## Live demo
 
-[View it here](https://YOUR-USERNAME.github.io/mood-board/)
+[View it here](https://simeonatarr231.github.io/moody/)
 
 ## What I learned
 
