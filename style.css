@@ -1,0 +1,161 @@
+:root {
+  --ink: #1b1f3b;
+  --plum: #4a314d;
+  --sienna: #c9713d;
+  --sage: #7c9885;
+  --parchment: #f2ece4;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "IBM Plex Mono", monospace;
+  color: var(--parchment);
+  overflow-x: hidden;
+}
+
+/* the two crossfading background layers */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  transition: opacity 1.2s ease;
+}
+
+.bg-layer-a {
+  background: linear-gradient(160deg, var(--ink), var(--plum));
+  opacity: 1;
+}
+
+.bg-layer-b {
+  background: linear-gradient(160deg, var(--sienna), var(--sage));
+  opacity: 0; /* JS will toggle this to crossfade */
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 6rem 2rem 3rem;
+}
+
+h1 {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+#quote-text {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 1.4;
+  border-left: 3px solid var(--parchment);
+  padding-left: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+#quote-author {
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 2.5rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+button {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--parchment);
+  border: 1px solid var(--parchment);
+  padding: 0.8rem 1.4rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+button:hover {
+  background: var(--parchment);
+  color: var(--ink);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--sienna);
+  outline-offset: 3px;
+}
+
+h2 {
+  font-family: "Fraunces", serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  opacity: 0.85;
+}
+
+#saved-list {
+  list-style: none;
+  counter-reset: mood-count;
+}
+
+#saved-list li {
+  counter-increment: mood-count;
+  font-size: 0.9rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(242, 236, 228, 0.15);
+}
+
+#saved-list li::before {
+  content: counter(mood-count, decimal-leading-zero) " — ";
+  font-weight: 600;
+  color: var(--sienna);
+}
+
+.site-footer {
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(242, 236, 228, 0.15);
+  text-align: center;
+}
+
+.footer-credit {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--parchment);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.footer-credit:hover {
+  opacity: 1;
+  color: var(--sienna);
+}
+
+@media (max-width: 480px) {
+  #quote-text {
+    font-size: 1.3rem;
+  }
+  .container {
+    padding: 4rem 1.5rem 2rem;
+  }
+}
